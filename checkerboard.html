@@ -1,0 +1,73 @@
+<!Doctype Html>
+<html>
+  <head>
+    <title> CheckerBoard </title>
+    <meta charset= "utf-8">
+    <meta name= "author" content= "Chevano">
+    <meta name= "description" content= "CheckerBoard">
+    <style>
+      table,
+      th,
+      td {
+        font: 15px Calibri;
+        border: solid 1px #DDD;
+        border-collapse: collapse;
+        padding: 2px 3px;
+        text-align: center;
+        margin: 20px 0;
+      }
+      th {
+        font-weight: bold;
+      }
+
+      .red{
+        width: 20px;
+        height: 20px;
+	    background-color: red;
+        padding: 0px;
+        margin: 0px;
+        color: white;
+      }
+      .yellow{
+	    width: 20px;
+        height: 20px;
+        padding: 0px;
+        margin: 0px;
+        color: white;
+        background-color: yellow;
+      }
+     </style>
+       
+  </head>
+
+  <body>
+    <p> 
+      Width: &nbsp;
+      <input type="text" placeholder="W" id="width">
+      Height: &nbsp;
+      <input type="text" placeholder="H" id="height">
+      <button onclick="buildBoard()">Build</button>
+    </p>
+    <script>
+      function buildBoard(){
+        var table  = document.createElement("table");
+        var width  = parseInt(document.getElementById("width").value)
+	    var height = parseInt(document.getElementById("height").value)
+          
+        for (var i = 1; i <= height; i++) {
+          var tr = document.createElement('tr');
+          for (var j = 1; j <= width; j++) {
+            var td = document.createElement('td');
+            if (i%2 == j%2)
+              td.className = "yellow";
+            else
+              td.className = "red";
+            tr.appendChild(td);
+          }
+          table.appendChild(tr);
+        }
+        document.body.appendChild(table);
+      }
+    </script>
+  </body>
+</html>
